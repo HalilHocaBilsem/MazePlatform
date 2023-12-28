@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace MazePlatform
     {
         Color seciliRenk = Color.Black;
         bool ciziyorMu = false;
-        Point oncekiKonum= Point.Empty;
+        Point oncekiKonum = Point.Empty;
         public FrmGame()
         {
             InitializeComponent();
@@ -28,7 +29,7 @@ namespace MazePlatform
         {
             if (ciziyorMu)
             {
-                if (oncekiKonum!= Point.Empty)
+                if (oncekiKonum != Point.Empty)
                 {
                     Pen p = new Pen(seciliRenk, 5);
                     Graphics gr = pCizimAlani.CreateGraphics();
@@ -46,18 +47,28 @@ namespace MazePlatform
 
         private void PCizimAlani_MouseDown(object sender, MouseEventArgs e)
         {
-            ciziyorMu=true;
+            ciziyorMu = true;
             oncekiKonum = e.Location;
 
-            var gr= pCizimAlani.CreateGraphics();
-        //    gr.DrawRectangle(Pens.Red, new Rectangle(e.X, e.Y, 10, 10)); ;
-        gr.FillRectangle(Brushes.Red,new Rectangle(e.X,e.Y,10,10));
+            var gr = pCizimAlani.CreateGraphics();
+            //    gr.DrawRectangle(Pens.Red, new Rectangle(e.X, e.Y, 10, 10)); ;
+
+            var firca = new LinearGradientBrush(new Rectangle(e.X, e.Y, 100, 10), Color.Red, seciliRenk, 0f);
+            gr.FillRectangle(firca, new Rectangle(e.X, e.Y, 100, 10));
+
+           
+
+            var firca2 = new TextureBrush(Image.FromFile("grass.png"));
+            gr.FillEllipse(firca2,new Rectangle(e.X-20,e.Y-20, 20,20));
+
+
+            
         }
 
         private void tGreen_ValueChanged(object sender, EventArgs e)
         {
-           seciliRenk=Color.FromArgb(tRed.Value,tGreen.Value,tBlue.Value);
-           pSeciliRenk.BackColor=seciliRenk;
+            seciliRenk = Color.FromArgb(tRed.Value, tGreen.Value, tBlue.Value);
+            pSeciliRenk.BackColor = seciliRenk;
         }
 
     }
