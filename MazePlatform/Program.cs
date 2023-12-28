@@ -16,7 +16,7 @@ namespace MazePlatform
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmLevelEditor());
+            Application.Run(new FrmGame());
         }
     }
 }

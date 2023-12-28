@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -27,17 +28,21 @@ namespace MazePlatform
         int yatayBlokSayisi = 0;
         int dikeyBlokSayisi = 0;
 
-        int AlininYasi = 10;
+       
         public FrmLevelEditor()
         {
             InitializeComponent();
      
 
-            
+          
         }
 
         private void FrmLevelEditor_Load(object sender, EventArgs e)
         {
+
+        
+
+
             resimCim = Image.FromFile("grass.png");
             resimCimUyari = Image.FromFile("grassDanger.png");
             resimStart = Image.FromFile("playerStart.png");
@@ -46,6 +51,10 @@ namespace MazePlatform
             resimTugla = Image.FromFile("brick.png");
 
             panelMap.Size = new Size(1300, 600);
+
+ 
+
+         
         }
 
 
@@ -83,6 +92,8 @@ namespace MazePlatform
             }
         }
 
+        
+
         void ResimDegistir(PictureBox p, string yeniTag)
         {
             if (yeniTag == "G")
@@ -103,7 +114,7 @@ namespace MazePlatform
             }
             else if (yeniTag == "S")
             {
-                if (BuTagVarMi(yeniTag))
+                if (BuTagVarMi(yeniTag)==true)
                 {
                     MessageBox.Show("Başlangıç sadece bir tane olabilir");
                     return;
@@ -151,6 +162,9 @@ namespace MazePlatform
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+
+
+
             string haritaMetin = "";
             int sol = 0;
             int ust = 0;
@@ -172,7 +186,9 @@ namespace MazePlatform
             sf.Filter = "Harita Dosyası|*.map";
             if (sf.ShowDialog()== DialogResult.OK)
             {
-                File.WriteAllText(sf.FileName, haritaMetin);
+              File.WriteAllText(sf.FileName, haritaMetin);
+
+
                 MessageBox.Show("Harita Kaydedildi");
             }
 
@@ -200,6 +216,9 @@ namespace MazePlatform
             {
                 var haritaMetinSatirlar = File.ReadAllLines(of.FileName);
 
+               
+
+
                 panelMap.Controls.Clear();
 
                 int ust = 0;
@@ -210,7 +229,7 @@ namespace MazePlatform
                     {
                         PictureBox p = new PictureBox();
                        
-                        p.Image = resimCim;
+                 
                         p.SizeMode = PictureBoxSizeMode.StretchImage;
                         p.Size = new Size(blokEbat, blokEbat);
                         p.Location = new Point(sol, ust);
