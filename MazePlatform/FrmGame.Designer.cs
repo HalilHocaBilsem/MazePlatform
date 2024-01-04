@@ -36,11 +36,13 @@
             this.tBlue = new System.Windows.Forms.TrackBar();
             this.tGreen = new System.Windows.Forms.TrackBar();
             this.pSeciliRenk = new System.Windows.Forms.PictureBox();
+            this.tPen = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.pCizimAlani)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tRed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tBlue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tGreen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pSeciliRenk)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tPen)).BeginInit();
             this.SuspendLayout();
             // 
             // pCizimAlani
@@ -121,6 +123,16 @@
             this.pSeciliRenk.TabIndex = 10;
             this.pSeciliRenk.TabStop = false;
             // 
+            // tPen
+            // 
+            this.tPen.Location = new System.Drawing.Point(352, 16);
+            this.tPen.Maximum = 30;
+            this.tPen.Minimum = 1;
+            this.tPen.Name = "tPen";
+            this.tPen.Size = new System.Drawing.Size(104, 56);
+            this.tPen.TabIndex = 11;
+            this.tPen.Value = 1;
+            // 
             // FrmGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -128,6 +140,7 @@
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1306, 568);
+            this.Controls.Add(this.tPen);
             this.Controls.Add(this.pSeciliRenk);
             this.Controls.Add(this.tGreen);
             this.Controls.Add(this.tBlue);
@@ -143,7 +156,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.tBlue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tGreen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pSeciliRenk)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tPen)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -157,5 +172,6 @@
         private System.Windows.Forms.TrackBar tBlue;
         private System.Windows.Forms.TrackBar tGreen;
         private System.Windows.Forms.PictureBox pSeciliRenk;
+        private System.Windows.Forms.TrackBar tPen;
     }
 }

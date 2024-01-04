@@ -16,6 +16,7 @@ namespace MazePlatform
         Color seciliRenk = Color.Black;
         bool ciziyorMu = false;
         Point oncekiKonum = Point.Empty;
+       
         public FrmGame()
         {
             InitializeComponent();
@@ -30,11 +31,16 @@ namespace MazePlatform
             if (ciziyorMu)
             {
                 if (oncekiKonum != Point.Empty)
-                {
-                    Pen p = new Pen(seciliRenk, 5);
+                {   var penSize = tPen.Value;
+                    Pen p = new Pen(seciliRenk, penSize);
+                 
                     Graphics gr = pCizimAlani.CreateGraphics();
                     gr.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                    
+
                     gr.DrawLine(p, oncekiKonum, e.Location);
+                    gr.FillEllipse(new SolidBrush(seciliRenk), new Rectangle(e.Location.X - penSize / 2, e.Location.Y - penSize / 2, penSize, penSize));
+
                     oncekiKonum = e.Location;
                 }
             }
@@ -50,19 +56,6 @@ namespace MazePlatform
             ciziyorMu = true;
             oncekiKonum = e.Location;
 
-            var gr = pCizimAlani.CreateGraphics();
-            //    gr.DrawRectangle(Pens.Red, new Rectangle(e.X, e.Y, 10, 10)); ;
-
-            var firca = new LinearGradientBrush(new Rectangle(e.X, e.Y, 100, 10), Color.Red, seciliRenk, 0f);
-            gr.FillRectangle(firca, new Rectangle(e.X, e.Y, 100, 10));
-
-           
-
-            var firca2 = new TextureBrush(Image.FromFile("grass.png"));
-            gr.FillEllipse(firca2,new Rectangle(e.X-20,e.Y-20, 20,20));
-
-
-            
         }
 
         private void tGreen_ValueChanged(object sender, EventArgs e)
